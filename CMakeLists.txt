@@ -70,6 +70,8 @@ add_library( zmutex ${ZMUTEX_HEADERS} ${ZMUTEX_SOURCES} )
 
 if ( ZMUTEX_TESTS_ENABLED )
     add_subdirectory( "${ZMUTEX_LIBS_DIR}/googletest" )
+
+    add_subdirectory("${ZMUTEX_TESTS_DIR}")
 endif ( ZMUTEX_TESTS_ENABLED )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
