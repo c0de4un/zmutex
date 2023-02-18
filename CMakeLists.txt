@@ -61,14 +61,8 @@ endif ( ZMUTEX_LINUX )
 # BUILD
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Create Executable Object
-add_executable( zmutex ${ZMUTEX_HEADERS} ${ZMUTEX_SOURCES} )
-
-# Configure Executable Object
-set_target_properties( zmutex
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${ZMUTEX_OUTPUT_DIR}"
-)
+# Create STATIC-Library Object
+add_library( zmutex ${ZMUTEX_HEADERS} ${ZMUTEX_SOURCES} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # TESTS
