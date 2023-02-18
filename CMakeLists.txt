@@ -20,6 +20,10 @@ include( "cmake/globals.cmake" )
 
 project( "zMutex" VERSION ${APP_VERSION} LANGUAGES C CXX )
 
+set( CMAKE_C_STANDARD ${ZMUTEX_C_STANDARD} )
+set( CMAKE_CXX_STANDARD ${ZMUTEX_CXX_STANDARD} )
+set( CMAKE_POSITION_INDEPENDENT_CODE ON )
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # HEADERS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -31,7 +35,7 @@ set( ZMUTEX_HEADERS
 # SOURCES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-set( ZMUTEX_HEADERS
+set( ZMUTEX_SOURCES
     "${ZMUTEX_SRC_DIR}/main.cpp" )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
