@@ -24,19 +24,38 @@ set( CMAKE_C_STANDARD ${ZMUTEX_C_STANDARD} )
 set( CMAKE_CXX_STANDARD ${ZMUTEX_CXX_STANDARD} )
 set( CMAKE_POSITION_INDEPENDENT_CODE ON )
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# HEADERS
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-set( ZMUTEX_HEADERS
-    "${ZMUTEX_SRC_DIR}/main.hpp" )
+if ( ZMUTEX_TESTS_ENABLED )
+    enable_testing()
+endif ( ZMUTEX_TESTS_ENABLED )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# SOURCES
+# CONFIGS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-set( ZMUTEX_SOURCES
-    "${ZMUTEX_SRC_DIR}/main.cpp" )
+# Platform
+include( "${ZMUTEX_DIR}/cmake/platform.cmake" )
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# MODULES
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# CORE
+include( "${ZMUTEX_SRC_DIR}/core/core.cmake" )
+
+# WINDOWS
+if ( ZMUTEX_WINDOWS )
+    include( "${ZMUTEX_SRC_DIR}/windows/windows.cmake" )
+endif ( ZMUTEX_WINDOWS )
+
+# ANDROID
+if ( ZMUTEX_ANDROID )
+    include( "${ZMUTEX_SRC_DIR}/android/android.cmake" )
+endif ( ZMUTEX_ANDROID )
+
+# LINUX
+if ( ZMUTEX_LINUX )
+    include( "${ZMUTEX_SRC_DIR}/linux/linux.cmake" )
+endif ( ZMUTEX_LINUX )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # BUILD
@@ -50,5 +69,13 @@ set_target_properties( zmutex
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${ZMUTEX_OUTPUT_DIR}"
 )
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# TESTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+if ( ZMUTEX_TESTS_ENABLED )
+    add_subdirectory( "${ZMUTEX_LIBS_DIR}/googletest" )
+endif ( ZMUTEX_TESTS_ENABLED )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

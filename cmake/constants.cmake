@@ -15,6 +15,10 @@ if ( NOT DEFINED ZMUTEX_CXX_STANDARD )
     set( ZMUTEX_CXX_STANDARD 14 )
 endif ( NOT DEFINED ZMUTEX_CXX_STANDARD )
 
+if ( NOT DEFINED ZMUTEX_TESTS_ENABLED )
+    set( ZMUTEX_TESTS_ENABLED ON )
+endif ( NOT DEFINED ZMUTEX_TESTS_ENABLED )
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # DIRS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
